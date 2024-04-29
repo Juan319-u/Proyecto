@@ -27,5 +27,10 @@ class fechas():
         if dias_prestamo >= 0:
             fecha_final = self.fecha_inicial + timedelta(days=dias_prestamo)
             self.fecha_inicial=fecha_final
+            print(fecha_final)
         else:
             print("Error en la cantidad de dias")
+
+p=fechas()
+p.fecha_inicial()
+p.calcular_fecha_final()
