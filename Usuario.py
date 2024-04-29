@@ -34,7 +34,6 @@ class Usuario(): #esta clase tiene la finalidad de manejar la creacion de usuari
                 self.codigo=int(input(f"Codigo\n "))
                 print("-----------------------------------------------------")
                 print("Usuario registrado exitosamente!! ")
-                break
 
             elif self.tipo_usuario==2:
                 self.codigo=int(input(f"Codigo\n "))
@@ -47,10 +46,6 @@ class Usuario(): #esta clase tiene la finalidad de manejar la creacion de usuari
                         print("Error")
                 print("-----------------------------------------------------")
                 print("Usuario registrado exitosamente!! ")
-                break
 
             else:
                 print("Error al registrar")
-
-pepito=Usuario()
-pepito.pedirDatos()
