@@ -90,3 +90,9 @@ class Material():
                     break
                 case _:
                     print("Error ")
+
+    def prestar_material(self):
+        if self.estado==1:#disponible
+            pass
+        elif self.estado==2:
+            pass
