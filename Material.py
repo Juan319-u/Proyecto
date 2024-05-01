@@ -1,11 +1,12 @@
 from datetime import date,timedelta
+from Fechas import fechas
 class Material():
     tipo_de_material=int
     numero_inventario=int
     titulo=str
     asignatura_topografica=str
     coleccion=int
-    estado=int
+    genero=int
     autor=str
     ISBN=int
     editorial=str
@@ -13,16 +14,19 @@ class Material():
     productor=str
     director=str
     año_grabacion=int
-    genero=int
     ISSN=int
     volumen=int
     año_publicacion=int
     numero_publicacion=int
     cantate=str
-    fecha_inicial=date
-    fecha_final=date
+    fecha_inicial=str
+    fecha_final=str
 
-    def __init__(self):
+    def __init__(self,titulo="",codigo=0,estado=1,tipo_material=0):
+        self.titulo=titulo
+        self.codigo=codigo
+        self.estado=estado
+        self.tipo_de_material=tipo_material
         pass
 
     def crear_nuevo_material(self):
@@ -57,10 +61,10 @@ class Material():
 
                 case 2:
                     self.productor=input("productor ")
-                    self.director=input("productor ")
+                    self.director=input("director ")
                     self.año_grabacion=int(input("año de grabacion "))
                     while True:
-                        genero=int(input("1) para documental\n 2) para comedia\n 3) para terror\n 4)para accion\n"))
+                        genero=int(input("1) para documental \n2) para comedia \n3) para terror \n4)para accion\n"))
                         match genero:
                             case 1:
                                 self.genero=genero
@@ -92,7 +96,52 @@ class Material():
                     print("Error ")
 
     def prestar_material(self):
-        if self.estado==1:#disponible
-            pass
-        elif self.estado==2:
-            pass
+        while True:
+            if self.estado==1:#disponible
+                print("Disponible para prestar ")
+                
+
+                while True:#organizar
+                    tipo=int(input("1 Estudiante \n2 Empleado\n "))
+                    coleccion=int(input("1) General \n2) Reserva \n3)Hemeroteca \n"))
+                    if tipo==1:
+                        while True:
+                            if coleccion==1:
+                                self.fecha_inicial=fechas.Fecha_inicial(self,15)
+                                self.estado=2
+                            elif coleccion==2:
+                                self.fecha_inicial=fechas.Fecha_inicial(self,1)
+                                self.estado=2
+                            elif coleccion==3:
+                                self.fecha_inicial=fechas.Fecha_inicial(self,3)
+                                self.estado=2
+                            else:
+                                print("Error ")
+                            break
+                    elif tipo==2:
+                        while True:
+                            if coleccion==1:
+                                self.fecha_inicial=fechas.Fecha_inicial(self,30)
+                                self.estado=2
+                            elif coleccion==2:
+                                self.fecha_inicial=fechas.Fecha_inicial(self,15)
+                                self.estado=2
+                            elif coleccion==3:
+                                self.fecha_inicial=fechas.Fecha_inicial(self,3)
+                                self.estado=2
+                            else:
+                                print("Error ")
+                    else:
+                        print("Error ")
+                
+                    print(f"debes devolver el articulo en la fecha {self.fecha_inicial}")
+                    break
+                break
+            elif self.estado==2:#prestado
+                print(f"El articulo ya esta prestado y sera devuelto {self.fecha_final}")
+            elif self.estado==3:#reparacion
+                print("El articulo se encuentra reparando ")
+            elif self.estado==4:#Inactivo
+                print("El articulo fue eliminado ")
+            else:
+                print("Error")
